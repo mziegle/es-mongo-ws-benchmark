@@ -1,0 +1,25 @@
+{
+    "name": "es-mongo-ws-benchmark",
+    "version": "1.0.0",
+    "description": "Benchmarking mongodb based event view with WebSocket subscription",
+    "main": "benachmark.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "author": "Michael Ziegler",
+    "license": "MIT",
+    "dependencies": {
+        "@eventstore/db-client": "^6.0.0",
+        "argparse": "^2.0.1",
+        "class-transformer": "^0.5.1",
+        "class-validator": "^0.14.0",
+        "mongoose": "^7.6.3",
+        "reflect-metadata": "^0.1.13",
+        "ws": "^8.14.2"
+    },
+    "devDependencies": {
+        "ts-node": "^10.9.1",
+        "typescript": "^5.2.2"
+    }
+}
