@@ -10,8 +10,6 @@ const { ArgumentParser } = require('argparse');
 const { version } = require('./package.json');
 const { randomUUID } = require("crypto");
 const WebSocket = require('ws');
-
-const loggingEnabled = false;
 const delayInMillis = 100;
 
 const parser = new ArgumentParser({
@@ -22,10 +20,11 @@ parser.add_argument('-v', '--version', { action: 'version', version });
 parser.add_argument('-e', '--events', { help: 'number of events to publish', default: 1000 });
 parser.add_argument('-c', '--chunkSize', { help: 'chunk size of events to publish', default: 100 });
 parser.add_argument('-s', '--stream', { help: 'the stream to publish the events to', default: 'stream' });
+parser.add_argument('-l', '--loggingEnabled', { help: 'enable logging', default: false });
 parser.add_argument('--eventstore', { help: 'Eventstore connection string', default: 'localhost:2113' });
 parser.add_argument('--wss', { help: 'WebSocket server connection string', default: 'localhost:9000' });
 
-const { eventstore, wss, events, chunkSize, stream } = parser.parse_args();
+const { eventstore, wss, events, chunkSize, stream, loggingEnabled } = parser.parse_args();
 
 console.log(eventstore, wss, events, chunkSize, stream);
 
@@ -46,7 +45,7 @@ async function receiveEvents() {
     webSocket.on('message', function message(message) {
         ++counter
 
-        if (loggingEnabled) {
+        if (Boolean(loggingEnabled)) {
             console.log('->', counter, message.toString());
         }
         if (counter === parseInt(events)) {

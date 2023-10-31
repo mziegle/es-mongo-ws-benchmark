@@ -5,7 +5,7 @@ const { Call } = require('./models/mongoose');
 const { transformAndValidate } = require('./models/classValidator');
 
 const loggingEnabled = false;
-const mode = 'classTransformer';
+const mode = process.env.MODE || 'classTransformer';
 const wssPort = process.env.WSS_PORT || '9000'
 const eventstore = process.env.EVENTSTORE || 'localhost:2113';
 const mongodb = process.env.MONGODB || 'localhost:27017';
@@ -57,7 +57,7 @@ async function start() {
         }
     } catch (error) {
         if (error instanceof StreamNotFoundError) {
-            console.log('stream does not exsist yet, subscribing from start');
+            console.log('stream does not exist yet, subscribing from start');
         }
     }
 
