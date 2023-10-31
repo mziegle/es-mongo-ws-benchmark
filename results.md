@@ -7,7 +7,7 @@
 
 ### no logging
 
-22279ms =>
+22279ms => 448 events/s
 
 ## 10000 events intertOne()
 
@@ -16,7 +16,7 @@
 
 ### no logging
 
-12695ms => 
+12695ms => 787 events/s
 
 ## 10000 events class validator
 
@@ -25,4 +25,4 @@
 
 ### no logging
 
-14501ms => 
+14501ms => 689 events/s
